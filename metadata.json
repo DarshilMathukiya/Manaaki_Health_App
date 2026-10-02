@@ -1,0 +1,6 @@
+{
+  "name": "Manaaki Health",
+  "description": "Elderly Health, Activity & Emergency Monitoring App with offline vitals, medication reminders, activity baseline tracking, and SOS dispatch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
