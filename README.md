@@ -7,9 +7,9 @@ This repository contains the native Android codebase used to conduct proxy user 
 
 Design & Accessibility Objectives
 This prototype was iteratively refined to meet the following criteria:
-WCAG 2.2 AAA Compliance:** High-contrast text and UI elements to support visually impaired users.
-Motor Accessibility:** Enforced minimum 48x48 dp touch targets across all interactive elements (navigation, buttons, and alerts) to accommodate reduced fine motor control.
-Cognitive Load Reduction:** Simplified navigation and decluttered dashboard views to focus exclusively on immediate health actions (medication reminders, core vitals, and emergency SOS).
+WCAG 2.2 AAA Compliance: High-contrast text and UI elements to support visually impaired users.
+Motor Accessibility: Enforced minimum 48x48 dp touch targets across all interactive elements (navigation, buttons, and alerts) to accommodate reduced fine motor control.
+Cognitive Load Reduction: Simplified navigation and decluttered dashboard views to focus exclusively on immediate health actions (medication reminders, core vitals, and emergency SOS).
 
 Technical Stack
 Platform: Android
