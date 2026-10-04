@@ -2,6 +2,7 @@ package com.example.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.domain.model.SampleData
 import com.example.domain.model.UserSession
 
 /**
@@ -52,7 +53,7 @@ class SecureStore(context: Context) {
         val token = prefs.getString(KEY_TOKEN, null) ?: return null
         val userId = prefs.getString(KEY_USER_ID, null) ?: return null
         val email = prefs.getString(KEY_EMAIL, "") ?: ""
-        val fullName = prefs.getString(KEY_FULL_NAME, "Margaret Te Aroha") ?: "Margaret Te Aroha"
+        val fullName = prefs.getString(KEY_FULL_NAME, SampleData.PATIENT_FULL_NAME) ?: SampleData.PATIENT_FULL_NAME
         val phone = prefs.getString(KEY_PHONE, "+64 21 555 8392") ?: "+64 21 555 8392"
         val expiresAt = prefs.getLong(KEY_EXPIRES_AT, 0L)
         val isBiometric = prefs.getBoolean(KEY_BIOMETRIC_OPT_IN, false)

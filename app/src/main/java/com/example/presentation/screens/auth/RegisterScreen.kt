@@ -66,6 +66,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.domain.model.SampleData
 import com.example.presentation.viewmodels.AuthViewModel
 import com.example.ui.theme.GeoBackground
 import com.example.ui.theme.GeoBorder
@@ -311,7 +312,7 @@ private fun StepOneBasicDetails(
             onValueChange = { viewModel.onRegisterFullNameChange(it) },
             modifier = Modifier.fillMaxWidth().testTag("register_fullname_input"),
             textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp, color = GeoTextPrimary),
-            placeholder = { Text("e.g. Margaret Te Aroha", fontSize = 18.sp, color = GeoTextSecondary.copy(alpha = 0.6f)) },
+            placeholder = { Text("e.g. ${SampleData.PATIENT_FULL_NAME}", fontSize = 18.sp, color = GeoTextSecondary.copy(alpha = 0.6f)) },
             leadingIcon = { Icon(Icons.Default.Person, contentDescription = null, tint = GeoPrimary) },
             singleLine = true,
             isError = state.errors.containsKey("fullName"),
@@ -350,7 +351,7 @@ private fun StepOneBasicDetails(
             onValueChange = { viewModel.onRegisterEmailChange(it) },
             modifier = Modifier.fillMaxWidth().testTag("register_email_input"),
             textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp, color = GeoTextPrimary),
-            placeholder = { Text("e.g. margaret@example.nz", fontSize = 18.sp, color = GeoTextSecondary.copy(alpha = 0.6f)) },
+            placeholder = { Text("e.g. ${SampleData.PATIENT_EMAIL}", fontSize = 18.sp, color = GeoTextSecondary.copy(alpha = 0.6f)) },
             leadingIcon = { Icon(Icons.Default.Email, contentDescription = null, tint = GeoPrimary) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email, imeAction = ImeAction.Next),
@@ -644,7 +645,7 @@ private fun StepThreeCaregiver(
             onValueChange = { viewModel.onRegisterCaregiverNameChange(it) },
             modifier = Modifier.fillMaxWidth().testTag("register_caregiver_name_input"),
             textStyle = MaterialTheme.typography.bodyLarge.copy(fontSize = 18.sp, color = GeoTextPrimary),
-            placeholder = { Text("e.g. David Te Aroha (Son)", fontSize = 18.sp, color = GeoTextSecondary.copy(alpha = 0.6f)) },
+            placeholder = { Text("e.g. ${SampleData.CAREGIVER_NAME} (${SampleData.CAREGIVER_ROLE})", fontSize = 18.sp, color = GeoTextSecondary.copy(alpha = 0.6f)) },
             leadingIcon = { Icon(Icons.Default.Person, contentDescription = null, tint = GeoPrimary) },
             singleLine = true,
             shape = RoundedCornerShape(14.dp),

@@ -89,6 +89,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.domain.model.SampleData
 import com.example.presentation.viewmodels.CaregiverSyncViewModel
 import com.example.presentation.viewmodels.SettingsViewModel
 import com.example.ui.theme.GeoBackground
@@ -765,7 +766,7 @@ fun SettingsScreen(
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "Kia ora Margaret, take your morning medication with water.",
+                                text = "Kia ora ${SampleData.PATIENT_FIRST_NAME}, take your morning medication with water.",
                                 style = MaterialTheme.typography.bodyMedium.copy(
                                     fontSize = previewFontSize,
                                     fontWeight = FontWeight.SemiBold,

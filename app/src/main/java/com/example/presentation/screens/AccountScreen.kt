@@ -875,7 +875,7 @@ fun AccountScreen(
                         AccountActionRow(
                             icon = Icons.Default.AdminPanelSettings,
                             title = if (state.isCaregiverModeActive) "Exit Caregiver Mode" else "Switch to Caregiver Mode",
-                            subtitle = if (state.isCaregiverModeActive) "Return to Margaret's patient dashboard" else "Switch active view to an authorized whānau caregiver",
+                            subtitle = if (state.isCaregiverModeActive) "Return to ${state.userName}'s patient dashboard" else "Switch active view to an authorized whānau caregiver",
                             onClick = {
                                 if (state.isCaregiverModeActive) {
                                     viewModel.exitCaregiverMode()

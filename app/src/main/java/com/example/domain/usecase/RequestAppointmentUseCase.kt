@@ -2,6 +2,7 @@ package com.example.domain.usecase
 
 import com.example.data.repository.AppointmentRepository
 import com.example.domain.model.AppointmentRequest
+import com.example.domain.model.SampleData
 import com.example.domain.model.SyncStatus
 
 class RequestAppointmentUseCase(
@@ -30,8 +31,8 @@ class RequestAppointmentUseCase(
             facilityName = facilityName,
             reasonCategory = reasonCategory,
             requestedDateTime = requestedDateTime,
-            patientName = patientName.ifBlank { "Margaret Te Aroha" },
-            patientContact = patientContact.ifBlank { "+64 21 555 0192" },
+            patientName = patientName.ifBlank { SampleData.PATIENT_FULL_NAME },
+            patientContact = patientContact.ifBlank { SampleData.CAREGIVER_PHONE },
             status = "REQUESTED",
             syncStatus = SyncStatus.PENDING,
             createdAt = System.currentTimeMillis()

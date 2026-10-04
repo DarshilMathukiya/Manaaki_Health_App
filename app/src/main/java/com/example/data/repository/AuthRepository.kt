@@ -6,6 +6,7 @@ import android.net.NetworkCapabilities
 import com.example.data.local.SecureStore
 import com.example.domain.model.AuthResult
 import com.example.domain.model.RegistrationData
+import com.example.domain.model.SampleData
 import com.example.domain.model.UserSession
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -25,76 +26,46 @@ class AuthRepository(
 
     // Built-in registered permanent & demo accounts
     private val registeredAccounts = mutableMapOf<String, Pair<String, UserSession>>(
-        // Permanent Patient Account
         "jeel12@gmail.com" to Pair(
             "jeel@12",
             UserSession(
                 userId = "user_patient_jeel_nz",
                 email = "jeel12@gmail.com",
-                fullName = "Jeel Patel",
+                fullName = SampleData.PATIENT_FULL_NAME,
                 phoneNumber = "+64 21 555 8392",
                 token = "clerk_jwt_token_jeel_patient_nz_83921049",
                 expiresAt = System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000), // 30 days
                 isBiometricEnabled = true,
-                caregiverName = "Admin Caregiver",
-                caregiverPhone = "+64 21 555 0192"
+                caregiverName = SampleData.CAREGIVER_NAME,
+                caregiverPhone = SampleData.CAREGIVER_PHONE
             )
         ),
-        // Permanent Caregiver / Admin Account
         "admin" to Pair(
             "Admin01234",
             UserSession(
                 userId = "user_admin_caregiver_nz",
                 email = "admin",
-                fullName = "Admin Caregiver",
-                phoneNumber = "+64 21 555 0192",
+                fullName = SampleData.CAREGIVER_NAME,
+                phoneNumber = SampleData.CAREGIVER_PHONE,
                 token = "clerk_jwt_token_admin_caregiver_nz_910283",
                 expiresAt = System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000), // 30 days
                 isBiometricEnabled = true,
-                caregiverName = "Admin Caregiver",
-                caregiverPhone = "+64 21 555 0192"
+                caregiverName = SampleData.CAREGIVER_NAME,
+                caregiverPhone = SampleData.CAREGIVER_PHONE
             )
         ),
-        "jaseline@manaaki.health.nz" to Pair(
-            "Manaaki2026",
+        "demo@example.com" to Pair(
+            "demo123Password",
             UserSession(
-                userId = "user_clerk_jaseline_nz",
-                email = "jaseline@manaaki.health.nz",
-                fullName = "Jaseline Miller",
+                userId = "user_demo_jeel_nz",
+                email = "demo@example.com",
+                fullName = SampleData.PATIENT_FULL_NAME,
                 phoneNumber = "+64 21 555 8392",
                 token = "clerk_jwt_token_session_prod_nz_83921049",
                 expiresAt = System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000), // 30 days
                 isBiometricEnabled = true,
-                caregiverName = "David Miller (Son)",
-                caregiverPhone = "+64 21 555 0192"
-            )
-        ),
-        "margaret@manaaki.health.nz" to Pair(
-            "Manaaki2026",
-            UserSession(
-                userId = "user_clerk_margaret_nz",
-                email = "margaret@manaaki.health.nz",
-                fullName = "Jaseline Miller",
-                phoneNumber = "+64 21 555 8392",
-                token = "clerk_jwt_token_session_prod_nz_83921049",
-                expiresAt = System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000), // 30 days
-                isBiometricEnabled = true,
-                caregiverName = "David Miller (Son)",
-                caregiverPhone = "+64 21 555 0192"
-            )
-        ),
-        "senior@manaaki.nz" to Pair(
-            "Health2026",
-            UserSession(
-                userId = "user_clerk_senior_02",
-                email = "senior@manaaki.nz",
-                fullName = "Aroha Williams",
-                phoneNumber = "+64 22 884 9102",
-                token = "clerk_jwt_token_session_prod_nz_910283",
-                expiresAt = System.currentTimeMillis() + (30L * 24 * 60 * 60 * 1000),
-                isBiometricEnabled = false,
-                caregiverName = "Sarah Williams (Daughter)",
-                caregiverPhone = "+64 22 991 2233"
+                caregiverName = SampleData.CAREGIVER_NAME,
+                caregiverPhone = SampleData.CAREGIVER_PHONE
             )
         )
     )

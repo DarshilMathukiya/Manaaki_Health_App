@@ -63,6 +63,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.data.local.DatabaseInitializer
 import com.example.domain.model.SOSTrigger
+import com.example.domain.model.SampleData
 import com.example.presentation.components.LogoutConfirmDialog
 import com.example.presentation.components.PersistentSOSFab
 import com.example.presentation.components.SideNavDrawerSheet
@@ -255,7 +256,7 @@ fun ManaakiApp(
 
         // 3. Authenticated State (Main App with Drawer, Header & Bottom Bar)
         is AuthState.Authenticated -> {
-            val displayName = "Jaseline"
+            val displayName = SampleData.PATIENT_FIRST_NAME
 
             if (showSettingsScreen) {
                 SettingsScreen(
@@ -279,8 +280,8 @@ fun ManaakiApp(
                     drawerContent = {
                         SideNavDrawerSheet(
                             userName = displayName,
-                            userNhi = "ABC9876",
-                            caregiverName = "David Miller (General Practitioner)",
+                            userNhi = SampleData.PATIENT_NHI,
+                            caregiverName = "${SampleData.GP_NAME} (${SampleData.GP_ROLE})",
                             onNavigateToProfile = {
                                 coroutineScope.launch { drawerState.close() }
                                 showAccountModal = true

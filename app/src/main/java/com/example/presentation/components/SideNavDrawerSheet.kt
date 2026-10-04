@@ -46,6 +46,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.domain.model.SampleData
 import com.example.ui.theme.GeoBackground
 import com.example.ui.theme.GeoBorder
 import com.example.ui.theme.GeoMintSelected
@@ -59,9 +60,9 @@ import com.example.ui.theme.HealthRedFlag
 
 @Composable
 fun SideNavDrawerSheet(
-    userName: String = "Jaseline",
-    userNhi: String = "ABC9876",
-    caregiverName: String = "David Miller (General Practitioner)",
+    userName: String = SampleData.PATIENT_FIRST_NAME,
+    userNhi: String = SampleData.PATIENT_NHI,
+    caregiverName: String = "${SampleData.GP_NAME} (${SampleData.GP_ROLE})",
     onNavigateToProfile: () -> Unit,
     onNavigateToCaregivers: () -> Unit,
     onNavigateToHealthHistory: () -> Unit,
@@ -212,7 +213,7 @@ fun SideNavDrawerSheet(
             DrawerNavItem(
                 icon = Icons.Outlined.People,
                 title = "Caregiver Contact",
-                subtitle = "David Miller & emergency contacts",
+                subtitle = "${SampleData.CAREGIVER_NAME} & emergency contacts",
                 onClick = onNavigateToCaregivers,
                 testTag = "drawer_nav_caregivers"
             )

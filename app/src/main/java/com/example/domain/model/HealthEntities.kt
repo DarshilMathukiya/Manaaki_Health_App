@@ -168,16 +168,15 @@ data class EmergencyContact(
 )
 
 data class MedicalId(
-    val fullName: String = "Margaret Te Aroha",
-    val dateOfBirth: String = "14/05/1948",
-    val nhiNumber: String = "ABC1234", // NZ National Health Index
-    val bloodType: String = "O+",
-    val knownAllergies: String = "Penicillin, NSAIDs (mild)",
-    val chronicConditions: String = "Hypertension, Type 2 Diabetes, Mild Osteoarthritis",
+    val fullName: String = SampleData.PATIENT_FULL_NAME,
+    val dateOfBirth: String = SampleData.PATIENT_DOB,
+    val nhiNumber: String = SampleData.PATIENT_NHI, // NZ National Health Index
+    val bloodType: String = SampleData.PATIENT_BLOOD_GROUP,
+    val knownAllergies: String = SampleData.PATIENT_ALLERGIES,
+    val chronicConditions: String = SampleData.PATIENT_CONDITIONS,
     val emergencyContacts: List<EmergencyContact> = listOf(
-        EmergencyContact("David Te Aroha", "Son (Caregiver)", "+64 21 555 0192", true),
-        EmergencyContact("Sarah Jenkins", "Daughter", "+64 22 555 0834", false),
-        EmergencyContact("Dr. Alistair Ross", "GP (Greenlane Medical)", "+64 9 555 1200", false)
+        EmergencyContact(SampleData.CAREGIVER_NAME, SampleData.CAREGIVER_ROLE, SampleData.CAREGIVER_PHONE, true),
+        EmergencyContact(SampleData.GP_NAME, SampleData.GP_ROLE, SampleData.GP_PHONE, false)
     )
 )
 

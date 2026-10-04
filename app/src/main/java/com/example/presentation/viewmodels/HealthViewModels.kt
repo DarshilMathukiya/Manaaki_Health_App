@@ -54,6 +54,7 @@ import com.example.data.repository.AuthRepository
 import com.example.data.repository.CaregiverTaskRepository
 import com.example.domain.model.CaregiverTask
 import com.example.domain.model.FallDetectionMetrics
+import com.example.domain.model.SampleData
 import com.example.domain.model.TaskType
 import com.example.domain.usecase.AuthUseCase
 import com.example.presentation.voice.VoiceAssistantManager
@@ -114,7 +115,7 @@ data class HomeUiState(
     val emergencyStatusSummary: String = "No active alerts — Routine stable",
 
     // 5. Caregiver Function
-    val caregiverName: String = "David Te Aroha (General Practitioner)",
+    val caregiverName: String = "${SampleData.GP_NAME} (${SampleData.GP_ROLE})",
     val lastSyncedTimestamp: Long = System.currentTimeMillis() - (15 * 60 * 1000),
     val pendingSyncCount: Int = 0,
     val isSyncing: Boolean = false,
@@ -820,8 +821,8 @@ data class AppointmentUiState(
         "3:30 PM",
         "4:30 PM"
     ),
-    val patientName: String = "Margaret Te Aroha",
-    val patientContact: String = "+64 21 555 0192",
+    val patientName: String = SampleData.PATIENT_FULL_NAME,
+    val patientContact: String = SampleData.CAREGIVER_PHONE,
     val isSubmitting: Boolean = false,
     val isBookingModalOpen: Boolean = false,
     val isConfirmationOpen: Boolean = false,
@@ -942,33 +943,25 @@ data class CaregiverSyncUiState(
     val lastSyncedTimestamp: Long = System.currentTimeMillis() - (15 * 60 * 1000), // 15 mins ago
     val isSyncing: Boolean = false,
     val syncSuccessBanner: String? = null,
-    val caregiverName: String = "David Miller (General Practitioner)",
-    val caregiverContact: String = "+64 21 555 0192",
+    val caregiverName: String = "${SampleData.GP_NAME} (${SampleData.GP_ROLE})",
+    val caregiverContact: String = SampleData.GP_PHONE,
     val appointmentRequests: List<AppointmentRequest> = emptyList(),
     val caregivers: List<CaregiverContact> = listOf(
         CaregiverContact(
             id = "1",
-            name = "David Miller",
-            relationship = "General Practitioner",
-            phoneNumber = "+64 21 555 0192",
+            name = SampleData.CAREGIVER_NAME,
+            relationship = SampleData.CAREGIVER_ROLE,
+            phoneNumber = SampleData.CAREGIVER_PHONE,
             isPrimary = true,
             receivesRedFlags = true
         ),
         CaregiverContact(
             id = "2",
-            name = "Sarah Miller",
-            relationship = "General Practitioner",
-            phoneNumber = "+64 21 555 0831",
+            name = SampleData.GP_NAME,
+            relationship = SampleData.GP_ROLE,
+            phoneNumber = SampleData.GP_PHONE,
             isPrimary = false,
             receivesRedFlags = true
-        ),
-        CaregiverContact(
-            id = "3",
-            name = "Dr. Hemi Taylor",
-            relationship = "General Practitioner",
-            phoneNumber = "+64 9 307 4949",
-            isPrimary = false,
-            receivesRedFlags = false
         )
     ),
     // Caregiver / Admin Mode state
@@ -1008,11 +1001,11 @@ data class CaregiverSyncUiState(
     val generatedPdfFile: File? = null,
     val pdfGenerationError: String? = null,
     val selectedReportPeriod: String = "Past 30 Days",
-    val userName: String = "Jaseline Miller",
-    val userEmail: String = "jaseline@manaaki.health.nz",
-    val userPhoneNumber: String = "+64 21 555 8392",
+    val userName: String = com.example.domain.model.SampleData.PATIENT_FULL_NAME,
+    val userEmail: String = com.example.domain.model.SampleData.PATIENT_EMAIL,
+    val userPhoneNumber: String = SampleData.CAREGIVER_PHONE,
     val userAddress: String = "42 Karangahape Road, Auckland 1010",
-    val userNhiNumber: String = "ABC9876",
+    val userNhiNumber: String = SampleData.PATIENT_NHI,
     val emergencyNotes: String = "Penicillin allergy. Pacemaker fitted in 2021."
 )
 
