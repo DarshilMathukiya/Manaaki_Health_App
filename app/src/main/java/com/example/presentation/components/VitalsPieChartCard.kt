@@ -160,7 +160,7 @@ fun VitalsPieChartCard(
                     Spacer(modifier = Modifier.width(10.dp))
                     Column {
                         Text(
-                            text = "Vitals Analysis & Trends",
+                            text = "Your health readings",
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Bold,
                                 color = GeoPrimaryDark,
@@ -173,31 +173,33 @@ fun VitalsPieChartCard(
                         )
                     }
                 }
+            }
 
-                // Overall Health Tag
-                Surface(
-                    shape = RoundedCornerShape(100.dp),
-                    color = if (normalPercentage >= 80) GeoSageContainer else warningAmber.copy(alpha = 0.15f),
-                    border = BorderStroke(1.dp, GeoBorder.copy(alpha = 0.6f))
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Overall Health Status Chip (On its own line so it's never squeezed)
+            Surface(
+                shape = RoundedCornerShape(100.dp),
+                color = if (normalPercentage >= 80) GeoSageContainer else warningAmber.copy(alpha = 0.15f),
+                border = BorderStroke(1.dp, GeoBorder.copy(alpha = 0.6f))
+            ) {
+                Row(
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
-                    Row(
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp)
-                    ) {
-                        Icon(
-                            imageVector = if (normalPercentage >= 80) Icons.Default.CheckCircle else Icons.Default.TrendingUp,
-                            contentDescription = null,
-                            tint = if (normalPercentage >= 80) successGreen else warningAmber,
-                            modifier = Modifier.size(14.dp)
-                        )
-                        Text(
-                            text = "$normalPercentage% Optimal",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 12.sp,
-                            color = if (normalPercentage >= 80) GeoPrimaryDark else warningAmber
-                        )
-                    }
+                    Icon(
+                        imageVector = if (normalPercentage >= 80) Icons.Default.CheckCircle else Icons.Default.TrendingUp,
+                        contentDescription = null,
+                        tint = if (normalPercentage >= 80) successGreen else warningAmber,
+                        modifier = Modifier.size(16.dp)
+                    )
+                    Text(
+                        text = "$normalPercentage% Optimal",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp,
+                        color = if (normalPercentage >= 80) GeoPrimaryDark else warningAmber
+                    )
                 }
             }
 
