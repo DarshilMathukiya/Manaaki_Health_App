@@ -328,7 +328,7 @@ fun SideNavDrawerSheet(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Manaaki Health NZ • MOH Certified",
+                        text = "Manaaki Health NZ • Student prototype, not a medical device",
                         style = MaterialTheme.typography.labelSmall.copy(
                             color = GeoPrimaryDark,
                             fontWeight = FontWeight.Medium,
