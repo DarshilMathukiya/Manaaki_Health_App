@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -253,29 +254,35 @@ fun EmergencySOSScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 4.dp),
+                                .padding(vertical = 6.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Column {
+                            Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    text = "${contact.name} (${contact.relationship})",
-                                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold, color = GeoPrimaryDark)
+                                    text = contact.name,
+                                    style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold, color = GeoPrimaryDark, fontSize = 15.sp)
+                                )
+                                Text(
+                                    text = contact.relationship,
+                                    style = MaterialTheme.typography.bodySmall.copy(color = GeoPrimary, fontWeight = FontWeight.SemiBold, fontSize = 12.5.sp)
                                 )
                                 Text(
                                     text = contact.phone,
                                     style = MaterialTheme.typography.bodySmall.copy(color = GeoTextSecondary)
                                 )
                             }
+                            Spacer(modifier = Modifier.width(8.dp))
                             Button(
                                 onClick = { viewModel.callFacility(contact.phone) },
                                 colors = ButtonDefaults.buttonColors(containerColor = GeoPrimary),
                                 shape = RoundedCornerShape(12.dp),
-                                modifier = Modifier.height(40.dp)
+                                contentPadding = PaddingValues(horizontal = 14.dp, vertical = 10.dp),
+                                modifier = Modifier.defaultMinSize(minWidth = 90.dp, minHeight = 44.dp)
                             ) {
                                 Icon(imageVector = Icons.Default.Call, contentDescription = null, modifier = Modifier.size(16.dp), tint = Color.White)
-                                Spacer(modifier = Modifier.width(4.dp))
-                                Text("CALL", fontSize = 13.sp, fontWeight = FontWeight.Bold, letterSpacing = 0.8.sp)
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text("CALL", fontSize = 13.sp, fontWeight = FontWeight.Bold)
                             }
                         }
                     }
