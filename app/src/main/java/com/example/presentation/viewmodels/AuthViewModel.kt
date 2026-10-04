@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.model.AuthResult
 import com.example.domain.model.RegistrationData
+import com.example.domain.model.SampleData
 import com.example.domain.model.UserSession
 import com.example.domain.usecase.AuthUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,8 +31,8 @@ sealed class AuthState {
 }
 
 data class LoginUiState(
-    val emailOrPhone: String = "jeel12@gmail.com",
-    val password: String = "jeel@12",
+    val emailOrPhone: String = "demo@example.com",
+    val password: String = "demo123Password",
     val selectedRole: LoginRole = LoginRole.PATIENT,
     val isPasswordVisible: Boolean = false,
     val isLoading: Boolean = false,
@@ -45,7 +46,7 @@ data class LoginUiState(
     val showBiometricOptInDialog: Boolean = false,
     val isBiometricAvailable: Boolean = false,
     val cachedAvatarUrl: String? = null,
-    val cachedUserName: String = "Jeel Patel"
+    val cachedUserName: String = SampleData.PATIENT_FULL_NAME
 )
 
 data class RegisterUiState(
@@ -138,14 +139,14 @@ class AuthViewModel(
         val (newEmail, newPassword) = when (role) {
             LoginRole.PATIENT -> {
                 if (current.emailOrPhone == "admin" || current.emailOrPhone.isBlank()) {
-                    "jeel12@gmail.com" to "jeel@12"
+                    "demo@example.com" to "demo123Password"
                 } else {
                     current.emailOrPhone to current.password
                 }
             }
             LoginRole.CAREGIVER_ADMIN -> {
-                if (current.emailOrPhone == "jeel12@gmail.com" || current.emailOrPhone.isBlank()) {
-                    "Admin" to "Admin01234"
+                if (current.emailOrPhone == "demo@example.com" || current.emailOrPhone.isBlank()) {
+                    "admin" to "Admin01234"
                 } else {
                     current.emailOrPhone to current.password
                 }
