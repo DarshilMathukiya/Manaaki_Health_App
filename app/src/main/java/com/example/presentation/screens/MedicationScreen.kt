@@ -352,31 +352,29 @@ fun MedicationScreen(
                                         onClick = {
                                             viewModel.markDoseTaken(schedule, schedule.reminderTimes.firstOrNull() ?: "08:00")
                                         },
-                                        modifier = Modifier
-                                            .weight(1.3f)
-                                            .height(50.dp),
+                                        modifier = Modifier.weight(1.2f),
                                         shape = RoundedCornerShape(16.dp),
+                                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 12.dp),
                                         colors = ButtonDefaults.buttonColors(containerColor = GeoPrimary)
                                     ) {
-                                        Icon(imageVector = Icons.Default.Check, contentDescription = null, tint = Color.White)
+                                        Icon(imageVector = Icons.Default.Check, contentDescription = null, tint = Color.White, modifier = Modifier.size(18.dp))
                                         Spacer(modifier = Modifier.width(6.dp))
-                                        Text("MARK TAKEN", fontWeight = FontWeight.Bold, fontSize = 14.sp, letterSpacing = 0.8.sp)
+                                        Text("Mark Taken", fontWeight = FontWeight.Bold, fontSize = 14.sp)
                                     }
 
                                     OutlinedButton(
                                         onClick = {
                                             viewModel.snoozeDose(schedule, schedule.reminderTimes.firstOrNull() ?: "08:00")
                                         },
-                                        modifier = Modifier
-                                            .weight(1f)
-                                            .height(50.dp),
+                                        modifier = Modifier.weight(1f),
                                         shape = RoundedCornerShape(16.dp),
+                                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 12.dp),
                                         border = BorderStroke(1.dp, GeoBorder),
                                         colors = ButtonDefaults.outlinedButtonColors(containerColor = GeoSurface)
                                     ) {
-                                        Icon(imageVector = Icons.Default.Snooze, contentDescription = null, tint = GeoTextSecondary)
+                                        Icon(imageVector = Icons.Default.Snooze, contentDescription = null, tint = GeoTextSecondary, modifier = Modifier.size(18.dp))
                                         Spacer(modifier = Modifier.width(4.dp))
-                                        Text("SNOOZE", color = GeoTextSecondary, fontWeight = FontWeight.Bold, fontSize = 14.sp, letterSpacing = 0.8.sp)
+                                        Text("Snooze", color = GeoTextSecondary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                                     }
                                 }
                             }

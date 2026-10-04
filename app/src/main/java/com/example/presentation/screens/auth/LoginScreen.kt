@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -383,11 +384,11 @@ fun LoginScreen(
                                 )
                                 Spacer(modifier = Modifier.width(6.dp))
                                 Text(
-                                    text = "Caregiver/Admin",
+                                    text = "Caregiver",
                                     style = MaterialTheme.typography.labelMedium.copy(
                                         color = if (isCaregiver) Color.White else GeoPrimaryDark,
                                         fontWeight = FontWeight.Bold,
-                                        fontSize = 13.sp
+                                        fontSize = 14.sp
                                     )
                                 )
                             }
@@ -701,47 +702,52 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Create Account Navigation Link
+            // Create Account Navigation Link (Full Width Stack)
             Surface(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
                 color = GeoSageContainer.copy(alpha = 0.7f),
                 border = BorderStroke(1.dp, GeoBorder.copy(alpha = 0.6f))
             ) {
-                Row(
-                    modifier = Modifier
-                        .clickable { viewModel.navigateToRegister() }
-                        .padding(horizontal = 16.dp, vertical = 14.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Column {
-                        Text(
-                            text = "New to Manaaki Health?",
-                            style = MaterialTheme.typography.bodyMedium.copy(
-                                fontWeight = FontWeight.Bold,
-                                color = GeoPrimaryDark
-                            )
+                    Text(
+                        text = "New to Manaaki Health?",
+                        style = MaterialTheme.typography.titleMedium.copy(
+                            fontWeight = FontWeight.Bold,
+                            color = GeoPrimaryDark
                         )
-                        Text(
-                            text = "Set up your medication reminders today",
-                            style = MaterialTheme.typography.bodySmall.copy(
-                                color = GeoTextSecondary
-                            )
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = "Set up your medication reminders today",
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            color = GeoTextSecondary
                         )
-                    }
-                    Surface(
-                        shape = RoundedCornerShape(100.dp),
-                        color = GeoPrimary
+                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                    OutlinedButton(
+                        onClick = { viewModel.navigateToRegister() },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .defaultMinSize(minHeight = 48.dp)
+                            .testTag("login_register_button"),
+                        shape = RoundedCornerShape(12.dp),
+                        border = BorderStroke(1.5.dp, GeoPrimary),
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            containerColor = Color.White,
+                            contentColor = GeoPrimaryDark
+                        )
                     ) {
                         Text(
-                            text = "REGISTER",
-                            style = MaterialTheme.typography.labelSmall.copy(
-                                color = Color.White,
+                            text = "Register",
+                            style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Bold,
-                                letterSpacing = 0.8.sp
-                            ),
-                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                                color = GeoPrimaryDark,
+                                fontSize = 15.sp
+                            )
                         )
                     }
                 }
