@@ -6,7 +6,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,18 +18,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
+//import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.AddPhotoAlternate
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.Info
@@ -66,7 +63,6 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -76,7 +72,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import com.example.presentation.viewmodels.AuthViewModel
 import com.example.presentation.viewmodels.LoginRole
 import com.example.ui.theme.GeoBackground
@@ -163,10 +158,9 @@ fun LoginScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp, vertical = 20.dp),
+                .padding(horizontal = 24.dp, vertical = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
+            verticalArrangement = Arrangement.Center
         ) {
             if (onNavigateBack != null) {
                 Row(
@@ -189,76 +183,6 @@ fun LoginScreen(
                 }
             } else {
                 Spacer(modifier = Modifier.height(12.dp))
-            }
-
-            // Manaaki Health Logo Badge Header
-            ManaakiLogoBadge(
-                modifier = Modifier
-                    .size(90.dp)
-                    .padding(bottom = 12.dp)
-            )
-
-            // 2. Profile Avatar with Edit-Pencil (At least 48x48dp tappable)
-            Box(
-                contentAlignment = Alignment.BottomEnd,
-                modifier = Modifier.padding(bottom = 6.dp)
-            ) {
-                Surface(
-                    modifier = Modifier
-                        .size(88.dp)
-                        .clip(CircleShape)
-                        .testTag("profile_avatar_container"),
-                    shape = CircleShape,
-                    color = GeoMintSelected,
-                    border = BorderStroke(2.5.dp, GeoPrimaryDark)
-                ) {
-                    if (!state.cachedAvatarUrl.isNullOrBlank()) {
-                        AsyncImage(
-                            model = state.cachedAvatarUrl,
-                            contentDescription = "User profile photo",
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier.fillMaxSize()
-                        )
-                    } else {
-                        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                            Icon(
-                                imageVector = Icons.Default.Person,
-                                contentDescription = "Default avatar placeholder",
-                                tint = GeoPrimaryDark,
-                                modifier = Modifier.size(54.dp)
-                            )
-                        }
-                    }
-                }
-
-                // 48x48dp Touch Target Edit Pencil Button
-                Surface(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clickable { showEditAvatarDialog = true }
-                        .testTag("edit_profile_avatar_button"),
-                    shape = CircleShape,
-                    color = Color.Transparent
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        Surface(
-                            modifier = Modifier.size(34.dp),
-                            shape = CircleShape,
-                            color = GeoPrimary,
-                            border = BorderStroke(2.dp, Color.White),
-                            shadowElevation = 4.dp
-                        ) {
-                            Box(contentAlignment = Alignment.Center) {
-                                Icon(
-                                    imageVector = Icons.Default.Edit,
-                                    contentDescription = "Edit profile photo",
-                                    tint = Color.White,
-                                    modifier = Modifier.size(18.dp)
-                                )
-                            }
-                        }
-                    }
-                }
             }
 
             Spacer(modifier = Modifier.height(8.dp))
