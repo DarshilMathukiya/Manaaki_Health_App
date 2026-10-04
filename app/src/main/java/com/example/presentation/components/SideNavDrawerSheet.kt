@@ -43,6 +43,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ui.theme.GeoBackground
@@ -158,27 +159,27 @@ fun SideNavDrawerSheet(
                     HorizontalDivider(color = GeoBorder.copy(alpha = 0.5f), thickness = 1.dp)
                     Spacer(modifier = Modifier.height(10.dp))
 
-                    Row(
+                    Column(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         Text(
                             text = "NHI: $userNhi",
-                            style = MaterialTheme.typography.labelSmall.copy(
+                            style = MaterialTheme.typography.labelMedium.copy(
                                 color = GeoTextSecondary,
-                                fontWeight = FontWeight.Medium,
-                                fontSize = 11.sp
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 12.sp
                             )
                         )
                         Text(
-                            text = caregiverName,
-                            style = MaterialTheme.typography.labelSmall.copy(
-                                color = GeoPrimary,
+                            text = "GP: $caregiverName",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = GeoTextSecondary,
                                 fontWeight = FontWeight.SemiBold,
-                                fontSize = 11.sp
+                                fontSize = 12.sp
                             ),
-                            maxLines = 1
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
                 }
