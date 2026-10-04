@@ -262,7 +262,7 @@ fun ActivityScreen(
                                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold, color = GeoPrimary)
                             )
                             Text(
-                                text = "Routine Ratio",
+                                text = "Compared with usual",
                                 style = MaterialTheme.typography.bodySmall.copy(color = GeoTextSecondary)
                             )
                         }
@@ -274,7 +274,7 @@ fun ActivityScreen(
         // 4. Biomechanical Gait & Sedentary Metrics
         item {
             Text(
-                text = "MOBILITY & CADENCE BREAKDOWN",
+                text = "MOVEMENT TODAY",
                 style = MaterialTheme.typography.labelMedium.copy(
                     fontWeight = FontWeight.Bold,
                     color = GeoTextSecondary,
@@ -302,7 +302,7 @@ fun ActivityScreen(
                             text = "${state.gaitCadence.toInt()} spm",
                             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold, color = GeoPrimaryDark)
                         )
-                        Text(text = "Gait Cadence (Stable)", style = MaterialTheme.typography.bodySmall.copy(color = GeoTextSecondary))
+                        Text(text = "Walking pace (steady)", style = MaterialTheme.typography.bodySmall.copy(color = GeoTextSecondary))
                     }
                 }
 
@@ -319,7 +319,7 @@ fun ActivityScreen(
                             text = "${state.sedentaryMinutes / 60}h ${state.sedentaryMinutes % 60}m",
                             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold, color = GeoPrimaryDark)
                         )
-                        Text(text = "Resting / Seated", style = MaterialTheme.typography.bodySmall.copy(color = GeoTextSecondary))
+                        Text(text = "Resting time", style = MaterialTheme.typography.bodySmall.copy(color = GeoTextSecondary))
                     }
                 }
             }
@@ -328,7 +328,7 @@ fun ActivityScreen(
         // 5. Sensor Simulation & Testing Actions
         item {
             Text(
-                text = "SENSOR INGESTION CONTROLS",
+                text = "DEMO SENSOR CONTROLS",
                 style = MaterialTheme.typography.labelMedium.copy(
                     fontWeight = FontWeight.Bold,
                     color = GeoTextSecondary,
