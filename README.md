@@ -20,7 +20,7 @@ This repository contains the native Android code. It was used to run usability t
 
 The prototype was refined over several iterations towards these targets:
 
-- **High contrast:** text and controls were designed to meet the WCAG 2.2 AAA contrast ratio of 7:1. Text and button colours were checked against the 7:1 ratio on all main screens.
+- **High contrast:** body text meets the WCAG 2.2 AAA contrast ratio of 7:1 (10.3 to 17.4:1 by calculation). Status colours (amber, red, blue) meet 4.5:1 but not 7:1, and card borders are 2.6:1.
 - **Motor accessibility:** a minimum 48 x 48 dp touch target on interactive elements (navigation, buttons and alerts), for users with reduced fine motor control.
 - **Lower cognitive load:** simpler navigation and a decluttered Home screen that focuses on immediate health actions (medication reminders, core vitals and emergency SOS).
 - **Plain wording and large text:** short labels and layouts that still work at larger system font sizes.
@@ -37,6 +37,7 @@ The prototype was refined over several iterations towards these targets:
 | Care | Linked caregivers and GP with call buttons, task centre | FR6 (interface only) |
 | Emergency SOS | Hold for 3 seconds to confirm, current location, Medical ID, emergency contacts | FR4 (no real dialling) |
 | Nearby care | Clinics with distance, hours, Call, Nav and Book buttons | FR5 |
+| Account | Convert report into PDF button and share dialog (the PDF is empty) | FR8 (interface only) |
 | Menu and Settings | Profile, caregiver contact, health history, settings, Log out | n/a |
 
 A red SOS button is shown on the main screens so help is always one press away.
@@ -101,26 +102,28 @@ A red SOS button is shown on the main screens so help is always one press away.
 
 The `design/` folder contains [`Manaaki_Design_Iteration.pdf`](design/Manaaki_Design_Iteration.pdf). It shows before-and-after screenshots for six changes, each linked to a commit:
 
-| Change | Commit |
-|---|---|
-| SOS button covered content | `5c7c386` |
-| Button labels cut or split across lines | `5e6ac0a` |
-| Sign-in screen did not fit the screen | `47498f2` |
-| Vitals chip and legend squeezed | `55c3ad9` |
-| Consistent names across screens | `7ae64de` |
-| Navigation redesign | `60dbb97` |
+| Change | Problem | Commit |
+|---|---|---|
+| Change 1 | SOS button covered content | `5c7c386` |
+| Change 2 | Button labels cut or split across lines | `5e6ac0a` |
+| Change 3 | Sign-in screen did not fit the screen | `47498f2` |
+| Change 4 | Vitals chip and legend squeezed | `55c3ad9` |
+| Change 5 | Consistent names across screens | `7ae64de` |
+| Change 6 | Navigation redesign | `60dbb97` |
 
 ## Testing
 
 - Screens were checked on a OnePlus Nord 5 (Android 16) at normal and at the largest system font size.
-- Usability testing with 2 proxy users and an accessibility check were carried out. Results are in the Milestone 2 report.
+- Usability testing with 5 adult proxy users (aged 22 to 60) gave a mean SUS of 67.5 against a target of 75. A heuristic evaluation and an accessibility audit (WCAG 2.2, Accessibility Scanner) were also carried out. Results are in the Milestone 2 report.
 
 ## Known limitations
 
 - Sample data only. There is no backend or login server.
 - The Walk and Simulate fall buttons are demonstration controls that stand in for phone sensors.
 - The SOS screen does not place a real call.
-- Bluetooth devices and the PDF health summary from Milestone 1 are not built.
+- Bluetooth devices from Milestone 1 are not built.
+- The Account screen has a Convert report into PDF button and share dialog (FR8), but the PDF is empty.
+- TalkBack (screen reader) support was not tested.
 - Not tested with older adults, because that requires ethics approval.
 
 ## Disclaimer
